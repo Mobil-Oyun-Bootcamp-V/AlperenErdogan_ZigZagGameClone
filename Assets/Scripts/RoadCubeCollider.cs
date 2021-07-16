@@ -7,11 +7,12 @@ public class RoadCubeCollider : MonoBehaviour
 {
     private bool _destroyStarted = false;
 
-    private float _fallSpeed = 1;
+    private float _fallSpeed = 1.5f;
     private void Update()
     {
         if(!_destroyStarted)
             return;
+        //fall cube with acceleration
         if (_fallSpeed<10)
             _fallSpeed += Time.deltaTime*10;
         
@@ -22,16 +23,16 @@ public class RoadCubeCollider : MonoBehaviour
     {
         PathManager.Instance.InstantiateCube();
         GameManager.Instance.ONRoadCubeCollisionEnter?.Invoke();
-    }
+    }    
+    //Start to fall of road cube
     private void OnCollisionExit(Collision other)
     {
         StartCoroutine(StartDestroy());
         Destroy(this.gameObject,3f);
     }
-
     private IEnumerator StartDestroy()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.7f);
         _destroyStarted = true;
     }
 

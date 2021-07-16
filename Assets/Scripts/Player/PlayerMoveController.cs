@@ -5,7 +5,7 @@ using TouchPhase = UnityEngine.TouchPhase;
 
 namespace Player
 {
-
+    //Directions of ball movement
     public enum Direction
     {
         Nothing,Left,Forward
@@ -27,8 +27,10 @@ namespace Player
         {
             if (_lockInput)
                 return;
+            //If game speed increased from manager, syncing with game
             if (_speed != GameManager.Instance.gameSpeed)
                 _speed = GameManager.Instance.gameSpeed;
+            //Detecting fall
             if(transform.position.y<_startHeight)
                 GameManager.Instance.ONFailed?.Invoke();
             MovePlayer();
@@ -41,6 +43,7 @@ namespace Player
                 Touch touch = Input.GetTouch(0);
                 if (touch.phase == TouchPhase.Began)
                 {
+                    //With first touch we start game
                     if (!GameManager.Instance.isGameStarted)
                     {
                         GameManager.Instance.ONGameStarted?.Invoke();
@@ -49,9 +52,10 @@ namespace Player
                     _direction = _direction==Direction.Forward ? Direction.Left : Direction.Forward;
                 }
             }
-
+            //If we are not on simulator read input from mouse
             if (Application.isEditor&&Input.GetMouseButtonDown(0))
             {
+                //With first click we start game
                 if (!GameManager.Instance.isGameStarted)
                 {
                     GameManager.Instance.ONGameStarted?.Invoke();
@@ -78,6 +82,7 @@ namespace Player
         void OnFailed()
         {
             _lockInput = true;
+            //Detaching child camera to out
             transform.GetChild(0).parent = null;
             GetComponent<Rigidbody>().AddForce(_moveDirection*10,ForceMode.Impulse);
         }

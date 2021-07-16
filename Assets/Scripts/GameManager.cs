@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
         //
         groundMat.color= colors[0];
     }
+    //Every movement from one cube to another, getting next point to moves the light
     private void DequeueDirection()
     {
         followLightController.DequeueDirection();
@@ -74,6 +75,7 @@ public class GameManager : MonoBehaviour
 
     private void ChangeGroundMatColor()
     {
+        //Every 50 score change color of ground from list
         if (_currentColorIndex!=(_score / 50) % colors.Count)
         {
             _currentColorIndex = (_score / 50) % colors.Count;
@@ -82,7 +84,7 @@ public class GameManager : MonoBehaviour
             StartCoroutine(SmoothColor(targetColor,currentColor));
         }
     }
-
+    //Changing color smoothly
     private IEnumerator SmoothColor(Color targetColor,Color currentColor)
     {
         float t = 0;
