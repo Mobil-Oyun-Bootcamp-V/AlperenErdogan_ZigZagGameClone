@@ -16,18 +16,21 @@ public class UIManager : MonoBehaviour
         GameManager.Instance.ONScore += UpdateScore;
         GameManager.Instance.ONFailed += OnFailed;
     }
-
     private void UpdateScore()
     {
         scoreText.text = GameManager.Instance.Score.ToString();
     }
-
     private void OnFailed()
     {
-        failedPanelScoreText.text = "SCORE\n" + GameManager.Instance.Score + "\nBEST SCORE\n" + "864";
+        if (GameManager.Instance.Score>PlayerPrefs.GetInt("best"))
+        {
+            PlayerPrefs.SetInt("best",GameManager.Instance.Score);
+        }
+        
+        failedPanelScoreText.text = "SCORE\n" + GameManager.Instance.Score 
+                                              + "\nBEST SCORE\n" + PlayerPrefs.GetInt("best");
         failedPanel.SetActive(true);
     }
-
     public void OnRetryButtonClicked()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

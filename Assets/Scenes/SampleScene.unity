@@ -292,9 +292,9 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 135, y: 0, z: 0}
---- !u!1 &832369740 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2589287821435937316, guid: ba096f3c8a1d3e846a6e8f139a4bb11d,
+--- !u!4 &832369745 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5840016123273077889, guid: ba096f3c8a1d3e846a6e8f139a4bb11d,
     type: 3}
   m_PrefabInstance: {fileID: 5011006099214296085}
   m_PrefabAsset: {fileID: 0}
@@ -908,12 +908,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGameStarted: 0
   isGameFailed: 0
-  gameSpeed: 20
+  gameSpeed: 8
   colors:
   - {r: 0.29803923, g: 0.8, b: 1, a: 0}
   - {r: 0.35038438, g: 1, b: 0.2980392, a: 0}
   - {r: 1, g: 0.5063962, b: 0.2980392, a: 0}
-  - {r: 0.94062084, g: 0.2980392, b: 1, a: 0}
+  - {r: 0.27932715, g: 0.23896407, b: 0.2830189, a: 0}
   groundMat: {fileID: 2100000, guid: 0b4b02a767041384cb86392a0a88afc2, type: 2}
   followLightController: {fileID: 1430644158}
 --- !u!4 &1503445649
@@ -1114,6 +1114,49 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1760975810
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1760975812}
+  - component: {fileID: 1760975811}
+  m_Layer: 0
+  m_Name: ObjectPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1760975811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760975810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2b799ee22bc20141a80ca0ffefd31f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1760975812
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760975810}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 629.9147, y: 1262.4402, z: 1.5771484}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1773712836
 GameObject:
   m_ObjectHideFlags: 0
@@ -1284,6 +1327,11 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 112
       objectReference: {fileID: 0}
+    - target: {fileID: 951681109846725955, guid: cea08fa20d515884eb72049472e57414,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 951681109846725956, guid: cea08fa20d515884eb72049472e57414,
         type: 3}
       propertyPath: m_Name
@@ -1392,6 +1440,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: StartCube
       objectReference: {fileID: 0}
+    - target: {fileID: 5779300742993003978, guid: ba096f3c8a1d3e846a6e8f139a4bb11d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5840016123273077889, guid: ba096f3c8a1d3e846a6e8f139a4bb11d,
         type: 3}
       propertyPath: m_RootOrder
@@ -1463,10 +1516,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roadCubePrefab: {fileID: 2589287821435937316, guid: ba096f3c8a1d3e846a6e8f139a4bb11d,
     type: 3}
-  lastCube: {fileID: 832369740}
+  startCube: {fileID: 832369745}
   collectablePrefab: {fileID: 2784979566029410300, guid: 0d8e7405724c20a4cba641a29d342914,
     type: 3}
-  collectableChance: 33
+  collectableChance: 84
 --- !u!4 &7097578720431462905
 Transform:
   m_ObjectHideFlags: 0
